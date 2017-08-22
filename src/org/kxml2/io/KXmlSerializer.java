@@ -119,14 +119,17 @@ public class KXmlSerializer implements XmlSerializer {
                 	//if(c < ' ')
 					//	throw new IllegalArgumentException("Illegal control code:"+((int) c));
 
-                    if (c >= 0xd800 && c <= 0xdfff && i < s.length() - 1) {
-                        // write surrogate pair as single code value
-                        i++;
-                        int h = c;
-                        int l = s.charAt(i);
-                        int n = ((h - 0xd800) << 10) + (l - 0xdc00) + 0x010000;
-                        writer.write("&#" + n + ";");
-                    } if (c >= ' ' && c !='@' && (c < 127 || unicode)) {
+                    if (i < s.length() - 1) {
+                        char cLow = s.charAt(i + 1);
+                        if (Character.isSurrogatePair(c, cLow)) {
+                            i++; // Skip second surrogate
+                            // write surrogate pair as single code value
+                            writer.write("&#" + Character.toCodePoint(c, cLow) + ";");
+                            break;
+                        }
+                        // Does nothing smart about orphan surrogates, just output them "as is"
+                    }
+                    if (c >= ' ' && c !='@' && (c < 127 || unicode)) {
                         writer.write(c);
                     } else {
                         writer.write("&#" + ((int) c) + ";");
