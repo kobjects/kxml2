@@ -232,6 +232,9 @@ public class Node { //implements XmlIO{
             
             switch (type) {
 
+                case XmlPullParser.IGNORABLE_WHITESPACE :
+                    parser.nextToken();
+                    break;
                 case XmlPullParser.START_TAG :
                     {
                         Element child =

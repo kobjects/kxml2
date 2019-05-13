@@ -48,8 +48,8 @@
     	<javac srcdir="src" verbose="true"
     	       destdir="tmpclasses"
     	       optimize="true"
-    		   target="1.2"
-    		   source="1.2"
+    		   target="1.6"
+    		   source="1.6"
     	       debuglevel="none"/>
 	
         <mkdir dir="dist"/>
