@@ -213,6 +213,8 @@ public class Element extends Node {
 
         init();
 
+        nextNonWhitespace(parser);
+        super.parse(parser);
 
 		if (parser.isEmptyElementTag()) 
 			parser.nextToken ();
@@ -228,8 +230,9 @@ public class Element extends Node {
             XmlPullParser.END_TAG,
             getNamespace(),
             getName());
-            
-        parser.nextToken ();
+          
+        nextNonWhitespace(parser);
+        //parser.nextToken ();
     }
 
 

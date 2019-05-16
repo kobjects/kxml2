@@ -263,7 +263,7 @@ public class Node { //implements XmlIO{
                             && parser.getName() != null) {
                         addChild(ENTITY_REF, parser.getName());
                     }
-                    parser.nextToken();
+                    nextNonWhitespace(parser);
             }
         }
         while (!leave);
@@ -362,5 +362,13 @@ public class Node { //implements XmlIO{
                     throw new RuntimeException("Illegal type: " + type);
             }
         }
+    }
+
+    int nextNonWhitespace(XmlPullParser parser) throws XmlPullParserException, IOException {
+        int ret = parser.next();
+        if (ret == XmlPullParser.TEXT && parser.isWhitespace()) {
+            ret = parser.next();
+        }
+        return ret;
     }
 }
