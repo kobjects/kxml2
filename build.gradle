@@ -1,11 +1,17 @@
+plugins {
+    id 'org.javamodularity.moduleplugin' version '1.6.0' apply false
+    id 'maven-publish'
+}
+
 apply plugin: 'java'
+apply plugin: "org.javamodularity.moduleplugin"
 apply plugin: 'maven'
 
 group = 'net.sf.kxml'
-version = '2.5.0'
+version = '2.5.1'
 
-sourceCompatibility = 1.3
-targetCompatibility = 1.3
+sourceCompatibility = 9
+targetCompatibility = 9
 
 // This is in case we ever use non-ASCII chars in sources
 compileJava.options.encoding = 'UTF-8'
@@ -13,10 +19,35 @@ compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
     mavenLocal()
+    maven {
+        url "https://dl.bintray.com/unverbraucht/java9-fixed-jars"
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.kevin-read'
+            artifactId = 'kxml2'
+            version = '2.5.1'
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username bintrayUser
+                password bintrayPassword
+            }
+            // change to point to your repo, e.g. http://my.org/repo
+            url = "https://api.bintray.com/maven/unverbraucht/java9-fixed-jars/com.kevin-read.kxml2;publish=1"
+        }
+    }
 }
 
 dependencies {
-    compile group: 'xmlpull', name: 'xmlpull', version: '1.1.3.1'
+    compile group: 'org.xmlpull', name: 'xmlpull', version: '1.1.4.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
