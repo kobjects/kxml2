@@ -6,7 +6,7 @@ apply plugin: 'java'
 //apply plugin: 'maven'
 
 group = 'com.thekalinga'
-version = '1.0.0'
+version = '3.0.0'
 
 sourceCompatibility = JavaVersion.VERSION_1_9
 targetCompatibility = JavaVersion.VERSION_1_9
