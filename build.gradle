@@ -1,17 +1,19 @@
-plugins {
-    id 'org.javamodularity.moduleplugin' version '1.6.0' apply false
-    id 'maven-publish'
-}
+//plugins {
+//    id 'maven-publish'
+//}
 
 apply plugin: 'java'
-apply plugin: "org.javamodularity.moduleplugin"
-apply plugin: 'maven'
+//apply plugin: 'maven'
 
-group = 'net.sf.kxml'
-version = '2.5.1'
+group = 'com.thekalinga'
+version = '1.0.0'
 
-sourceCompatibility = 9
-targetCompatibility = 9
+sourceCompatibility = JavaVersion.VERSION_1_9
+targetCompatibility = JavaVersion.VERSION_1_9
+
+java {
+    modularity.inferModulePath.set(true)
+}
 
 // This is in case we ever use non-ASCII chars in sources
 compileJava.options.encoding = 'UTF-8'
@@ -24,27 +26,27 @@ repositories {
     }
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.kevin-read'
-            artifactId = 'kxml2'
-            version = '2.5.1'
-
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            credentials {
-                username bintrayUser
-                password bintrayPassword
-            }
-            // change to point to your repo, e.g. http://my.org/repo
-            url = "https://api.bintray.com/maven/unverbraucht/java9-fixed-jars/com.kevin-read.kxml2;publish=1"
-        }
-    }
-}
+//publishing {
+//    publications {
+//        maven(MavenPublication) {
+//            groupId = project.group
+//            artifactId = project.name
+//            version = project.version
+//
+//            from components.java
+//        }
+//    }
+//    repositories {
+//        maven {
+//            credentials {
+//                username bintrayUser
+//                password bintrayPassword
+//            }
+//            // change to point to your repo, e.g. http://my.org/repo
+//            url = "https://api.bintray.com/maven/thekalinga/fixed-jars/${project.group}.${project.name};publish=1"
+//        }
+//    }
+//}
 
 dependencies {
     compile group: 'org.xmlpull', name: 'xmlpull', version: '1.1.4.0'
@@ -56,6 +58,6 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allSource
 }
 
-artifacts {
-    archives sourcesJar
-}
+//artifacts {
+//    archives sourcesJar
+//}
