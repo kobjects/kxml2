@@ -8,8 +8,8 @@ apply plugin: 'maven'
 group = 'com.github.thekalinga'
 version = '3.0.1'
 
-sourceCompatibility = JavaVersion.VERSION_1_9
-targetCompatibility = JavaVersion.VERSION_1_9
+sourceCompatibility = 9
+targetCompatibility = 9
 
 java {
     modularity.inferModulePath.set(true)
