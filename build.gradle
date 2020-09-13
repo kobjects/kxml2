@@ -6,12 +6,12 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'com.github.thekalinga'
-version = '3.0.3'
+version = '3.0.4'
 
 java {
     modularity.inferModulePath.set(true)
-    sourceCompatibility = 9
-    targetCompatibility = 9
+    sourceCompatibility = JavaVersion.VERSION_1_9
+    targetCompatibility = JavaVersion.VERSION_1_9
 }
 
 // This is in case we ever use non-ASCII chars in sources
