@@ -15,6 +15,6 @@ repositories {
 }
 
 dependencies {
-  implementation("com.github.thekalinga:kxml2:<version>")
+  implementation("com.github.stefanhaustein:kxml2:<version>")
 }
 ```
