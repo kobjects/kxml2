@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'com.github.stefanhaustein'
-version = '3.0.0'
+version = '2.5.0'
 
 java {
     modularity.inferModulePath.set(true)
