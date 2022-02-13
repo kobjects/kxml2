@@ -1,7 +1,7 @@
 # README
-
-* Now the content of `org.xmlpull.v1.XmlPullParserFactory` is split across multiple lines `org.kxml2.io.KXmlParser` & `org.kxml2.io.KXmlSerializer` instead of comma separated `org.kxml2.io.KXmlParser,org.kxml2.io.KXmlSerializer` which bombs in Java 9+. This fix will ensure java 9 module system will atleast no complain. Even with this fix, implementation of `XmlPullParserFactory` in `xmlpull` is still nothing but abuse of `ServiceLoader` implementation. But atleast it does not bomb right now
-* Library can be added as a dependency using
+- Interested in Kotlin? Try [kmxl3](https://github.com/kobjects/kxml3) and provide feedback!
+- Now the content of `org.xmlpull.v1.XmlPullParserFactory` is split across multiple lines `org.kxml2.io.KXmlParser` & `org.kxml2.io.KXmlSerializer` instead of comma separated `org.kxml2.io.KXmlParser,org.kxml2.io.KXmlSerializer` which bombs in Java 9+. This fix will ensure java 9 module system will atleast no complain. Even with this fix, implementation of `XmlPullParserFactory` in `xmlpull` is still nothing but abuse of `ServiceLoader` implementation. But atleast it does not bomb right now
+- Library can be added as a dependency using
 
 ```groovy
 repositories {
@@ -15,6 +15,6 @@ repositories {
 }
 
 dependencies {
-  implementation("com.github.stefanhaustein:kxml2:<version>")
+  implementation("com.github.kobjects:kxml2:<version>")
 }
 ```
